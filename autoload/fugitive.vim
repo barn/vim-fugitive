@@ -2885,11 +2885,11 @@ function! fugitive#BufReadStatus(...) abort
     endif
 
     call s:AddSection('Rebasing ' . rebasing_head, rebasing)
-    call s:AddSection('Untracked', untracked)
     call s:AddSection('Unstaged', unstaged)
     let unstaged_end = len(unstaged) ? line('$') : 0
     call s:AddSection('Staged', staged)
     let staged_end = len(staged) ? line('$') : 0
+    call s:AddSection('Untracked', untracked)
 
     if len(push) && !(push ==# pull && get(props, 'branch.ab') =~# '^+0 ')
       call s:AddLogSection('Unpushed to ' . push, [push . '..' . head])
